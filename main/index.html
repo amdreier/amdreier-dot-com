@@ -2,14 +2,29 @@
 <html>
     <head>
         <title>amdreier's home page</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script>
+            $.getJSON("https://api.ipify.org?format=json", function(data) {
+
+                // Setting text of element P with id gfg
+                $("#gfg").html(`Your IP is: ${data.ip}`);
+
+                console.log(`Your IP is: ${data.ip}`);
+            })
+        </script>
     </head>
     <body>
-        <h1>
             <a href="https://romaetplus.amdreier.com">
-                <img src="server-icon.png">
-                <p>REP HOME PAGE</p>
+                <img class="rotate-on-hover" src="media/server-icon.png">
+                <h1>
+                    <p>REP HOME PAGE</p>
+                </h1>
             </a>
-        </h1>
+
+        <p id="gfg">Geting IP...</p>
         <a href="node">Node</a>
         <br>
         <a href="himom">for mom</a>
