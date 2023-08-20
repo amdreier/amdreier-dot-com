@@ -1,9 +1,0 @@
-.rotate-on-hover {
-    animation: rotate 1.5s linear infinite paused;
-}
-.rotate-on-hover:hover {
-    animation-play-state: running; 
-}
-@keyframes rotate {
-    to{ transform: rotate(360deg); }
-}
