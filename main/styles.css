@@ -1,0 +1,113 @@
+body {
+    background-color: rgb(131, 89, 89);
+    color:rgb(188, 238, 238);
+    margin-left: 75px;
+    margin-right: 75px;
+}
+
+/* .header {
+
+} */
+
+/* .content {
+
+} */
+
+.projects {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 10px 30px;
+    align-items: center;
+}
+
+.project {
+    width: 350px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgb(128, 107, 107);
+    transition: all 0.5s ease;
+}
+
+.project h3 {
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid rgb(188, 238, 238);
+}
+
+.project p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.project img {
+    width: 100%;
+}
+
+.project:hover {
+    width: 400px;
+    margin: 15px;
+}
+
+.project-page-link:hover {
+    opacity: 75%;
+    cursor: pointer;
+}
+
+.project-details {
+    width: 100%;
+}
+
+.project-title {
+    margin-top: 0;
+}
+
+.project-page a h3 {
+    margin: 0px 5px 5px 0px;
+    display: inline;
+}
+
+.setup-img {
+    width: 500px;
+}
+
+h2, .project-page h1 {
+    border-bottom: 1px solid rgb(182, 170, 170);
+    padding-bottom: 5px;
+}
+
+.iPhone {
+    border-radius: 30px;
+    height: 350px;
+    border: 3px solid black;
+}
+
+.iPhone-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.hover-link {
+    color:rgb(188, 238, 238);
+    text-decoration: none;
+}
+
+.hover-link:hover {
+    color: blue;
+}
+
+/* .project-page {
+
+} */
+
+/* .project-content {
+    
+} */
+
+/* .project-description {
+
+} */
+
