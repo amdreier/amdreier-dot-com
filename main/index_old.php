@@ -17,7 +17,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
     </head>
     <body>
             <a href="https://romaetplus.amdreier.com">
-                <img class="rotate-on-hover" src="shared/media/server-icon.png">
+                <img class="rotate-on-hover" style="cursor: pointer;" src="shared/media/server-icon.png">
                 <h1>
                     <p>REP HOME PAGE</p>
                 </h1>

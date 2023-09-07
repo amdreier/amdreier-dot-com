@@ -1,6 +1,14 @@
 const express = require('express');
 const { readFile } = require('fs');
 const app = express();
+const port = 3000;
+
+function log(type, request, response) {
+    console.log(`IP: ${request.header('x-forwarded-for')}`);
+    console.log(`Request: ${type}`);
+    console.log(`Response: ${response}`);
+    console.log("");
+};
 
 
 app.get('/', (request, response) => {
@@ -11,6 +19,8 @@ app.get('/', (request, response) => {
         }
 
         response.send(html);
+
+        log("GET /", request, "Success");
     });
 });
 
@@ -22,7 +32,9 @@ app.get('/nodeSubfolder', (request, response) => {
         }
 
         response.send(html);
+
+        log("GET /nodeSubfolder", request, "Success");
     });
 });
 
-app.listen(3000, () => console.log("Server started on port 3000"));
+app.listen(port, () => console.log(`Server started on port: ${port}\n`));
