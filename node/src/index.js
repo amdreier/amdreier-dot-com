@@ -50,14 +50,15 @@ app.get('/creds', (request, response) => {
 
 app.post('/allow', (req, res) => {
     let addr = req.body.addr;
+    let user = req.body.user;
 
-    let command = `echo "${process.env.ROOT_PASS}" | sudo -S ufw insert 1 allow from ${addr} proto tcp to any port 25565`;
+    let command = `echo "${process.env.ROOT_PASS}" | sudo -S ufw insert 1 allow from ${addr} proto tcp to any port 25565 comment '${user}'`;
     exec(command);
 
     res.send("true");
 
     // res.send(`Done: ${addr}\n`);
-    log(`POST ${addr} /allow`, req, `Added: ${addr}`);
+    log(`POST ${addr} /allow`, req, `Added: ${addr}, ${user}`);
 });
 
 app.listen(port, () => console.log(`Server started on port: ${port}\n`));
