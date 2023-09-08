@@ -1,0 +1,11 @@
+[33m[nodemon] 3.0.1[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node .`[39m
+Server started on port: 3000
+
+IP: undefined
+Request: PUT 165.123.231.91 /allow
+Response: Added: 165.123.231.91
+
