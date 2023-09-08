@@ -47,11 +47,11 @@ app.get('/nodeSubfolder', (request, response) => {
 app.get('/creds', (request, response) => {
     let req_ip = request.socket.remoteAddress;
 
-    if (req_ip == '10.0.0.40') {
+    if (req_ip == '::ffff:10.0.0.40') {
         response.send(process.env.ROOT_PASS);
         log("GET /creds", request, "Allowed");
     } else {
-        log("GET /creds", request, "Denied");
+        log(`GET /creds from ${req_ip}`, request, "Denied");
     }
 });
 
@@ -60,7 +60,7 @@ app.post('/allow', (req, res) => {
     let user = req.body.user;
     let req_ip = req.socket.remoteAddress;
 
-    if (req_ip == '10.0.0.40') {
+    if (req_ip == '::ffff:10.0.0.40') {
 
         let command = `echo "${process.env.ROOT_PASS}" | sudo -S ufw insert 1 allow from ${addr} proto tcp to any port 25565 comment '${user}'`;
         exec(command);
@@ -69,7 +69,7 @@ app.post('/allow', (req, res) => {
 
         log(`POST ${addr}, ${user} /allow`, req, `Added: ${addr}, ${user}`);
     } else {
-        log(`POST ${addr}, ${user} /allow`, req, `Denied`);
+        log(`POST ${addr}, ${user} /allow from ${req_ip}`, req, `Denied`);
     }
 });
 
