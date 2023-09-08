@@ -52,7 +52,7 @@ app.post('/allow', (req, res) => {
     res.send("true");
 
     // res.send(`Done: ${addr}\n`);
-    log(`PUT ${addr} /allow`, req, `Added: ${addr}`);
+    log(`POST ${addr} /allow`, req, `Added: ${addr}`);
 });
 
 app.listen(port, () => console.log(`Server started on port: ${port}\n`));
