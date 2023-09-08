@@ -5,42 +5,43 @@
     $sql_username = "root";
     $sql_dbname = "REP_Users";
 
-    $url = "http://localhost/creds";
+    $url = "http://10.0.0.80:3000/creds";
 
     $sql_password = file_get_contents($url);
-    if ($result === false) {
-        die("Cannot connect to DB");
-    }
+    echo($sql_password);
+    // if ($result === false) {
+    //     die("Cannot connect to DB");
+    // }
 
 
-    // Create connection
-    $conn = new mysqli($sql_servername, $sql_username, $sql_password, $sql_dbname);
+    // // Create connection
+    // $conn = new mysqli($sql_servername, $sql_username, $sql_password, $sql_dbname);
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    // if ($conn->connect_error) {
+    //     die("Connection failed: " . $conn->connect_error);
+    // }
 
-    // $sql = "SELECT * FROM Users WHERE username = '$username' LIMIT 1";
+    // // $sql = "SELECT * FROM Users WHERE username = '$username' LIMIT 1";
 
-    $stmt = $conn->prepare("SELECT * FROM Users WHERE username = ? LIMIT 1");
-    $stmt->bind_param("s", $username);
+    // $stmt = $conn->prepare("SELECT * FROM Users WHERE username = ? LIMIT 1");
+    // $stmt->bind_param("s", $username);
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    // $username = $_POST['username'];
+    // $password = $_POST['password'];
 
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // $stmt->execute();
+    // $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-          echo("id: " . $row["uid"]. " - Name: " . $row["username"]);
-        }
-    } else {
-        echo("0 results");
-    }
+    // if ($result->num_rows > 0) {
+    //     while($row = $result->fetch_assoc()) {
+    //       echo("id: " . $row["uid"]. " - Name: " . $row["username"]);
+    //     }
+    // } else {
+    //     echo("0 results");
+    // }
 
-    $stmt->close();
-    $conn->close();
+    // $stmt->close();
+    // $conn->close();
 
     if ($username == "amdreier" && $password == "pass") {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
