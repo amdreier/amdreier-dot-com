@@ -45,3 +45,9 @@ IP: 165.123.226.184
 Request: GET /
 Response: Success
 
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node .`[39m
+Server started on port: 3000
+
