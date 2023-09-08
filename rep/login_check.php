@@ -28,22 +28,28 @@
 
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $pswd_hash = 'N/A';
+    $uid = -1;
 
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-          echo("id: " . $row["uid"]. " - Name: " . $row["username"]);
-        }
+        $row = $result->fetch_assoc();
+        // GET USER DATA HERE
+        $pswd_hash = $row['pswd_hash'];
+        $uid = $row['uid'];
     } else {
         echo("0 results");
     }
-
     $stmt->close();
     $conn->close();
 
-    if ($username == "amdreier" && $password == "pass") {
+    $is_valid = "false";
+    // validate user on node server
+    
+
+    if ($is_valid == "true") {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             $ip = $_SERVER['HTTP_CLIENT_IP'];
         } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
@@ -53,7 +59,7 @@
         }
 
         $url = "http://10.0.0.80:3000/allow";
-        $data = ['addr' => "$ip"];
+        $data = ['addr' => "$ip", 'user' => "$username"];
         $options = [
             'http' => [
                 'header' => "Content-type: application/x-www-form-urlencoded\r\n",
