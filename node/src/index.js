@@ -44,16 +44,8 @@ app.get('/nodeSubfolder', (request, response) => {
 });
 
 app.get('/creds', (request, response) => {
-    readFile('/var/www/node/src/html/nodeSubfolder.html', 'utf8', (err, html) => {
-        if (err) {
-            console.log(err);
-            response.status(500).send('server error\n');
-        }
-
-        response.send(process.env.ROOT_PASS);
-
-        log("GET /nodeSubfolder", request, "Success");
-    });
+    response.send(process.env.ROOT_PASS);
+    log("GET /creds", request, "Success");
 });
 
 app.post('/allow', (req, res) => {
