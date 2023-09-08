@@ -77,7 +77,7 @@
         header("Location: http://romaetplus.amdreier.com");
         exit();
     } else {
-        // header("Location: http://romaetplus.amdreier.com/login.html");
-        // exit();
+        header("Location: http://romaetplus.amdreier.com/login.html");
+        exit();
     }
 ?>
