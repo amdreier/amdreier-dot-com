@@ -33,3 +33,15 @@ IP: 181.214.94.108, 172.71.223.22
 Request: GET /
 Response: Success
 
+IP: 165.123.226.184
+Request: GET /
+Response: Success
+
+IP: 165.123.226.184
+Request: GET /nodeSubfolder
+Response: Success
+
+IP: 165.123.226.184
+Request: GET /
+Response: Success
+

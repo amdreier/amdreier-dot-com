@@ -1,0 +1,25 @@
+body {
+    background-color: aliceblue;
+}
+
+form {
+    display: table;
+    border-spacing: 0px 4px;
+}
+
+.form-row {
+    display: table-row;
+}
+
+input {
+    display: table-cell;
+}
+
+label {
+    display: table-cell;
+    padding-right: 5px;
+}
+
+input:focus {
+    background-color: lightblue;
+}
