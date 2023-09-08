@@ -1,5 +1,8 @@
 const express = require('express');
 const { readFile } = require('fs');
+const { exec } = require("child_process");
+const bodyParser = require('body-parser');
+require('dotenv').config()
 const app = express();
 const port = 3000;
 
@@ -9,6 +12,9 @@ function log(type, request, response) {
     console.log(`Response: ${response}`);
     console.log("");
 };
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 
 app.get('/', (request, response) => {
@@ -35,6 +41,18 @@ app.get('/nodeSubfolder', (request, response) => {
 
         log("GET /nodeSubfolder", request, "Success");
     });
+});
+
+app.post('/allow', (req, res) => {
+    let addr = req.body.addr;
+
+    let command = `echo "${process.env.ROOT_PASS}" | sudo -S ufw insert 1 allow from ${addr} proto tcp to any port 25565`;
+    exec(command);
+
+    res.send("true");
+
+    // res.send(`Done: ${addr}\n`);
+    log(`PUT ${addr} /allow`, req, `Added: ${addr}`);
 });
 
 app.listen(port, () => console.log(`Server started on port: ${port}\n`));
