@@ -1,3 +1,16 @@
+<?php
+  session_start();
+
+  // redirect if not logged in
+  if (!isset($_SESSION['uid'])) {
+    header("Location: https://romaetplus.amdreier.com/login");
+  }
+  $username = "Guest";
+  if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +23,9 @@
 </head>
 <body>
   <h1>This is the REP Home Page</h1>
+  <p>Welcome <?php echo(htmlspecialchars($username)); ?></p>
   <img class='rotate-on-hover' src='shared/media/server-icon.png'>
   <br>
-  <a href="https://romaetplus.amdreier.com/login">Login</a>
+  <a href="https://romaetplus.amdreier.com/logout">Logout</a>
 </body>
 </html>
