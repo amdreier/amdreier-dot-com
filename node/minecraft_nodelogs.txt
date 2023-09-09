@@ -1,0 +1,123 @@
+[33m[nodemon] 3.0.1[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node .`[39m
+Server started on port: 3000
+
+IP: undefined
+Request: GET /creds
+Response: Success
+
+IP: undefined
+Request: GET /creds
+Response: Success
+
+IP: undefined
+Request: GET /creds
+Response: Success
+
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node .`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node .`[39m
+Server started on port: 3000
+
+IP: undefined
+Request: GET /creds
+Response: Success
+
+IP: undefined
+Request: POST 165.123.225.7 /allow
+Response: Added: 165.123.225.7, amdreier
+
+IP: undefined
+Request: GET /creds
+Response: Success
+
+IP: undefined
+Request: POST 165.123.225.7 /allow
+Response: Added: 165.123.225.7, amdreier
+
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node .`[39m
+Server started on port: 3000
+
+IP: undefined
+Request: GET /creds
+Response: Success
+
+IP: undefined
+Request: POST 165.123.225.7 /allow
+Response: Added: 165.123.225.7, amdreier
+
+IP: undefined
+Request: GET /creds
+Response: Success
+
+IP: undefined
+Request: POST 165.123.225.7 /allow
+Response: Added: 165.123.225.7, amdreier
+
+IP: undefined
+Request: GET /creds
+Response: Success
+
+IP: undefined
+Request: POST 165.123.225.7 /allow
+Response: Added: 165.123.225.7, amdreier
+
+IP: undefined
+Request: GET /creds
+Response: Success
+
+IP: undefined
+Request: GET /creds
+Response: Success
+
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node .`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node .`[39m
+Server started on port: 3000
+
+IP: undefined
+Request: GET /creds
+Response: Denied
+
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node .`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node .`[39m
+Server started on port: 3000
+
+IP: undefined
+Request: GET /creds
+Response: Denied
+
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node .`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node .`[39m
+Server started on port: 3000
+
+IP: undefined
+Request: GET /creds from ::ffff:10.0.0.40
+Response: Denied
+
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node .`[39m
+Server started on port: 3000
+
+IP: undefined
+Request: GET /creds
+Response: Allowed
+
+IP: undefined
+Request: GET /creds
+Response: Allowed
+
