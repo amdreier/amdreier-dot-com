@@ -8,17 +8,10 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         /* SETUP SQL */
-        $sql_servername = "localhost";
-        $sql_username = "root";
-        $sql_dbname = "REP_Users";
-
-        // get root passowrd from .env
-        $url = "http://10.0.0.80:3000/creds";
-        $sql_password = file_get_contents($url);
-
-        if ($result === false) {
-            die("Cannot connect to DB");
-        }
+        $sql_servername = $_SERVER['DB_SERVER'];
+        $sql_username = $_SERVER['DB_USER'];
+        $sql_dbname = $_SERVER['DB_NAME'];
+        $sql_password = $_SERVER['DB_PASS'];
 
         // Create connection
         $conn = new mysqli($sql_servername, $sql_username, $sql_password, $sql_dbname);
