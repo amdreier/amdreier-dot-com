@@ -24,6 +24,9 @@
 <body>
   <h1>This is the REP Home Page</h1>
   <p>Welcome <?php echo(htmlspecialchars($username)); ?></p>
+  <?php if(isset($_SESSION['ip'])) { ?>
+  <p>You can now log into the server from your current IP address: <?php echo(htmlspecialchars($_SESSION['ip'])); ?></p>
+  <?php } ?>
   <img class='rotate-on-hover' src='shared/media/server-icon.png'>
   <br>
   <a href="https://romaetplus.amdreier.com/logout">Logout</a>
