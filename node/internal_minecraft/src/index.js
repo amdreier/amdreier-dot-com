@@ -15,16 +15,16 @@ function log(type, request, response) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.get('/creds', (request, response) => {
-    let req_ip = request.socket.remoteAddress;
+// app.get('/creds', (request, response) => {
+//     let req_ip = request.socket.remoteAddress;
 
-    if (req_ip == '::ffff:10.0.0.40') {
-        response.send(process.env.ROOT_PASS);
-        log("GET /creds", request, "Allowed");
-    } else {
-        log(`GET /creds from ${req_ip}`, request, "Denied");
-    }
-});
+//     if (req_ip == '::ffff:10.0.0.40') {
+//         response.send(process.env.ROOT_PASS);
+//         log("GET /creds", request, "Allowed");
+//     } else {
+//         log(`GET /creds from ${req_ip}`, request, "Denied");
+//     }
+// });
 
 app.post('/allow', (req, res) => {
     let addr = req.body.addr;
