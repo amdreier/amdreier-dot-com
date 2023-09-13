@@ -9,9 +9,9 @@ body {
 
 } */
 
-/* .content {
-
-} */
+.main-page h1{
+    text-align: center;
+}
 
 .projects {
     display: flex;

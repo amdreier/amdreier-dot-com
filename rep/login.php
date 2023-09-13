@@ -57,9 +57,11 @@
                     $ip = $_SERVER['REMOTE_ADDR'];
                 }
 
+                $api_key = $_SERVER['API_KEY'];
+                
                 // Send IP to Minecraft Server
                 $url = "http://10.0.0.80:3000/allow";
-                $data = ['addr' => "$ip", 'user' => "$username"];
+                $data = ['addr' => "$ip", 'user' => "$username", 'api_key' => "$api_key"];
                 $options = [
                     'http' => [
                         'header' => "Content-type: application/x-www-form-urlencoded\r\n",
