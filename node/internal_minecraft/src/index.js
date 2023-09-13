@@ -12,6 +12,10 @@ function log(type, request, response) {
     console.log("");
 };
 
+function checkReq(req_ip, api_key) {
+    return req_ip == '::ffff:10.0.0.40' && api_key === process.env.API_KEY;
+}
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -29,9 +33,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.post('/allow', (req, res) => {
     let addr = req.body.addr;
     let user = req.body.user;
+    let api_key = req.body.api_key;
     let req_ip = req.socket.remoteAddress;
 
-    if (req_ip == '::ffff:10.0.0.40') {
+    if (checkReq(req_ip, api_key)) {
 
         let command = `echo "${process.env.ROOT_PASS}" | sudo -S ufw insert 1 allow from ${addr} proto tcp to any port 25565 comment '${user}'`;
         exec(command);
