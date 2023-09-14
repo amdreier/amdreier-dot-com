@@ -31,14 +31,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 // });
 
 app.post('/allow', (req, res) => {
-    let addr = req.body.addr;
-    let user = req.body.user;
-    let api_key = req.body.api_key;
-    let req_ip = req.socket.remoteAddress;
+    const addr = req.body.addr;
+    const user = req.body.user;
+    const api_key = req.body.api_key;
+    const req_ip = req.socket.remoteAddress;
 
     if (checkReq(req_ip, api_key)) {
 
-        let command = `echo "${process.env.ROOT_PASS}" | sudo -S ufw insert 1 allow from ${addr} proto tcp to any port 25565 comment '${user}'`;
+        const command = `echo "${process.env.ROOT_PASS}" | sudo -S ufw insert 1 allow from ${addr} proto tcp to any port 25565 comment '${user}'`;
         exec(command);
 
         res.send("true");
