@@ -3,7 +3,7 @@ const { readFile } = require('fs');
 const { exec } = require("child_process");
 const bodyParser = require('body-parser');
 require('dotenv').config()
-const { createHash } = require('crypto');
+const { scryptSync, randomBytes, timingSafeEqual } = require('crypto');
 const { create } = require('domain');
 const app = express();
 const port = 4000;
@@ -19,32 +19,52 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 
-function hash(input) {
-    return createHash('sha256').update(input).digest('hex');
+function signUp(password) {
+    const password_pep = `${password}+${process.env.PEPPER}`;
+
+    const salt = randomBytes(32).toString('hex');
+    const pswd_hash = scryptSync(password_pep, salt, 64);
+
+    return `${salt}:${pswd_hash.toString('hex')}`;
+}
+
+function login(password, pswd_hash) {
+    const password_pep = `${password}+${process.env.PEPPER}`;
+
+    const [salt, hash] = pswd_hash.split(':');
+    const hashed_password = scryptSync(password_pep, salt, 64);
+
+    const hashBuffer = Buffer.from(hash, 'hex');
+
+    return timingSafeEqual(hashed_password, hashBuffer);
 }
 
 app.get('/pswd_hash', (req, res) => {
-    let pswd_hash = req.query.pswd_hash;
-    let password = req.query.password;
-    let req_ip = req.socket.remoteAddress;
+    const pswd_hash = req.query.pswd_hash;
+    const password = req.query.password;
+    const int_key = req.query.int_key;
+    const req_ip = req.socket.remoteAddress;
 
-
-    if (pswd_hash === hash(password)) {
-        res.send("true");
-        log(`GET /pswd_hash`, req, 'TRUE');
-    } else {
-        res.send("false");
-        log(`GET /pswd_hash`, req, 'FALSE');
+    if (int_key == process.env.INT_KEY && req_ip == "::ffff:127.0.0.1") {
+        if (login(password, pswd_hash)) {
+            res.send("true");
+            log('GET /pswd_hash', req, 'TRUE');
+        } else {
+            res.send("false");
+            log('GET /pswd_hash', req, 'FALSE');
+        }
     }
-    
 });
 
 app.post('/pswd_hash', (req, res) => {
-    let password = req.body.password;
-    let req_ip = req.socket.remoteAddress;
+    const password = req.body.password;
+    const int_key = req.body.int_key;
+    const req_ip = req.socket.remoteAddress;
 
-    res.send(hash(password));
-    log(`POST /pswd_hash`, req, 'COMPLETE');    
+    if (int_key == process.env.INT_KEY && req_ip == "::ffff:127.0.0.1") {
+        res.send(signUp(password));
+        log('POST /pswd_hash', req, 'COMPLETE');    
+    }
 });
 
 
