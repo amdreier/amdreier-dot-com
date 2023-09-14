@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://amdreier.com/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="https://amdreier.com/shared/styles/sharedStyles.css"/>
+    <title>Project: romaetplus.amdreier.com</title>
+</head>
+<body class='project-page'>
+    <a href='https://amdreier.com'><h3>Home</h3></a> 
+    <a target='_blank' href="https://github.com/amdreier/amdreier-dot-com/"><h3>GitHub Link</h3></a>
+    <a class='hover-link' target='_blank' href="https://romaetplus.amdreier.com"><h1 class='project-title'>romaetplus.amdreier.com</h1></a>
+    <div class='project-content'>
+        <div class='project-description'>
+            <h2>Description:</h2>
+            <p>
+                This Website acts as the sign in page to my Minecraft server, hosted at the same address. Signing in adds your IP address to 
+                the list of allowed addresses which can access the server.
+            </p>
+            <p>
+                This project works using a combination of backend technologies. The goal of this project was to give me more familiarity with tools like PHP, SQL/Databases, and Node.js
+                I wanted to leverage the developer experience of Node.js, while keeping the functionality of PHP, so I decided to combine the best of both, by using PHP for the main routing and logic
+                of the program, and using the Node.js servers for internal API calls and communication between servers in my network.
+            </p>
+            <h3>Node.js</h3>
+            <p>
+                I use three Node.js servers, two running on the Web server, and one on the Minecraft server:
+            </p>
+            <p>
+                One on the Web server handles password hashing and checking, as I found this can be most safely and easily implemented in Node.js making use of the <code>'crypto'</code> library.
+            </p>
+            <p>
+                The Node.js server on the Minecraft server handles requests to allow new IP addresses to view the Minecraft server. It only responds to requests with the correct source IP <em>and</em> correct API key.
+                These credentials are stored in a separate directory on the Web server accessible to the PHP code through the <code>$_SERVER</code> variable, and in .env files for the Node.js server, accessable with the <code>'dotenv'</code> library.
+                It responds to POST requests which specify an <code>IP</code> and <code>Username</code>, and executes the necessary commands to add that IP to the Firewall with access to port 25565 (Minecraft), adding a comment with the Username for clearer logging.
+            </p>
+            <p>
+                Lastly, I have one Node.js server set up to serve content for a specific directory on the Web server, currently /node, however, this was mostly for my own learning and it doesn't server a real purpose for the project.
+            </p>
+            <h3>PHP</h3>
+            <p>
+                I use PHP with Apache to manage the main logic of the Website. I used PHP for its easy integration with Apache, which helps to enforce restrictions on directory access, and easy implementation for user sessions.
+                I also wanted to ensure I had exposure to a variety of backend technologies, given PHP's continued prevalence in Web applications today.
+            </p>
+            <p>
+                PHP is used to manage user logins, logouts, signups, and page permissions, which is made easier with PHP's native session handling and page redicrection.
+                PHP also makes it easy to connect with the MySQL database I use to store user data, with prepared statements to limit the risk of SQL injection. 
+                Additionally, using Apache configurations, I can store the sensitive database credentials in the <code>$_SERVER</code> variable, accessible within the PHP, but not visible in the source code.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

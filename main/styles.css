@@ -1,17 +1,15 @@
 body {
-    background-color: rgb(131, 89, 89);
+    background-color: rgb(167, 143, 112);
     color:rgb(188, 238, 238);
-    margin-left: 75px;
-    margin-right: 75px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* .header {
-
-} */
 
 .main-page h1{
     text-align: center;
 }
+
+
 
 .projects {
     display: flex;
@@ -19,16 +17,72 @@ body {
     justify-content: center;
     gap: 10px 30px;
     align-items: center;
+    pointer-events: none;
+    transition: all 0.5s ease;
 }
 
-.project {
-    width: 350px;
-    border-style: solid;
-    border-color: black;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: rgb(128, 107, 107);
-    transition: all 0.5s ease;
+.projects:hover {
+    margin-left: 85px;
+    margin-right: 85px;
+}
+
+/* mobile */
+@media not screen and (min-width: 480px) {
+    .body {
+        margin: 10px;
+    }
+
+    .project {
+        width: 350px;
+        border-style: solid;
+        border-color: black;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: rgb(102, 97, 90);
+        transition: all 0.5s ease;
+        pointer-events: auto;
+    }
+}
+
+/* desktop */
+@media only screen and (min-width: 480px) {
+    .projects {
+        margin-left: 125px;
+        margin-right: 125px;
+    }
+
+    .header {
+        margin-left: 125px;
+        margin-right: 125px;
+    }
+
+    .projects-header {
+        margin-left: 125px;
+        margin-right: 125px;
+    }
+
+    .project {
+        min-height: 400px;
+        width: 350px;
+        border-style: solid;
+        border-color: black;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: rgb(102, 97, 90);
+        transition: all 0.5s ease;
+        pointer-events: auto;
+    }
+
+    .project-page {
+        margin-left: 125px;
+        margin-right: 125px;
+    }
+}
+
+
+.project:hover {
+    width: 400px;
+    margin: 15px;
 }
 
 .project h3 {
@@ -44,11 +98,6 @@ body {
 
 .project img {
     width: 100%;
-}
-
-.project:hover {
-    width: 400px;
-    margin: 15px;
 }
 
 .project-page-link:hover {
@@ -67,13 +116,18 @@ body {
 .project-page a h3 {
     margin: 0px 5px 5px 0px;
     display: inline;
+    padding-bottom: 0px;
+}
+
+.project-page a {
+    text-decoration: none;
 }
 
 .setup-img {
     width: 500px;
 }
 
-h2, .project-page h1 {
+h2, .project-page h1, .project-page h3 {
     border-bottom: 1px solid rgb(182, 170, 170);
     padding-bottom: 5px;
 }
@@ -110,4 +164,3 @@ h2, .project-page h1 {
 /* .project-description {
 
 } */
-
