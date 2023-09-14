@@ -51,9 +51,10 @@
                 die("Couldn't connect to DB");
             }
             
+            $int_key = $_SERVER['INT_KEY'];
             // Get hash from node
             $url = "http://localhost:4000/pswd_hash";
-            $data = ['password' => "$password"];
+            $data = ['password' => "$password", 'int_key' => "$int_key"];
             $options = [
                 'http' => [
                     'header' => "Content-type: application/x-www-form-urlencoded\r\n",

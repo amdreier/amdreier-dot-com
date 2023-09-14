@@ -24,7 +24,7 @@
         $stmt->bind_param("s", $username);
 
         // get entered user data
-        $username = $_POST['username'];
+        $username = urlencode($_POST['username']);
         $password = urlencode($_POST['password']);
         $pswd_hash = 'N/A';
         $uid = -1;
@@ -40,10 +40,11 @@
 
             $pswd_hash = $row['pswd_hash'];
             $uid = $row['uid'];
+            $int_key = $_SERVER['INT_KEY'];
 
             // validate user on node server
             $is_valid = "false";
-            $url = "http://localhost:4000/pswd_hash?pswd_hash=$pswd_hash&password=$password";
+            $url = "http://localhost:4000/pswd_hash?pswd_hash=$pswd_hash&password=$password&int_key=$int_key";
             $is_valid = file_get_contents($url);
 
             // if valid, sign in and add IP to Minecraft server
