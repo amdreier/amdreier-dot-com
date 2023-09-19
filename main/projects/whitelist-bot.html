@@ -13,9 +13,33 @@
     <a target='_blank' href="https://github.com/amdreier/Discord-Bot-Minecraft-Whitelist"><h3>GitHub Link</h3></a>
     <h1 class='project-title'>Whitelist-Bot</h1>
     <div class='project-content'>
-        
+        <h2>Description:</h2>
         <div class='project-description'>
-            <p>Page coming soon! For now check out the GitHub link!</p>
+            <p>
+                This is a Discord Bot I wrote with a Node.js server to automate adding players to my Minecraft server's Whitelist.
+            </p>
+            <p>
+                The motivation behind this project, was that I noticed a large number of automated Minecraft bots attempting to join my server. 
+                I wanted to ensure only verified users could join my Minecraft server, but as I was at school, I didn't have much time to spend manually vetting and adding users to the server whitelist.
+                This Bot allows users within the community to add their friends and people they trust to the server, without me needing to get involved.
+            </p>
+            <p>
+                This was my introduction to Node.js as well as JavaScript as a whole.
+            </p>
+            <p>
+                I makes use of the Discord.js API to respond to commands within the server chat.
+                If the command sender is using the correct channel, and has the correct permissions, the Bot makes a connection to the Minecraft server using it's remote connection (RCON) interface.
+            </p>
+            <p>
+                The user can also optionally specify the username of a user in the Discord server to add the role of 'Whitelisted' to, so that user can be identified as being whitelisted on the Minecraft server.
+            </p>
+            <p>
+                Lastly, the Bot will return the result of the RCON handler and the result of optionally adding the 'Whitelisted' role to the Discord user.
+            </p>
+            <p>
+                I still have to deal with the large number of requests made to my server, which even though they're denied, can still cause issues.
+                To solve this problem, I created a sign in page, <a target='_blank' href='https://romaetplus.amdreier.com'>romaetplus.amdreier.com</a>, which you can read more about on its <a href='https://amdreier.com/projects/romaetplus-amdreier-com'>project page</a>
+            </p>
         </div>
     </div>
 </body>

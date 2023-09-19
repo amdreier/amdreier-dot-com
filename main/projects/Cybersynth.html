@@ -13,10 +13,39 @@
     <a target='_blank' href="https://github.com/amdreier/ESE3500-FinalProj"><h3>GitHub Link</h3></a>
     <h1 class='project-title'>Cybersynth</h1>
     <div class='project-content'>
-        
+        <h2>Description:</h2>
         <div class='project-description'>
-            <p>Page coming soon! For now check out the GitHub link!</p>
+            <p>
+                This was a final project for an Embedded Systems class built in pairs.
+                The code is entirely Bare Metal C for an Arduino, specifically the 328P Microprocessor.
+            </p>
+            <div class='text-side-image'>
+                <div class='side-text'>
+                    <p>
+                        It's main function was as a Violin-Synthesizer MIDI Controller.
+                    </p>
+                    <p>
+                        The design features a neck with a location sensor (soft-membrane potentiometer) and force sensor (force-sensitive potentiometer) to take pitch and vibrato input and a joystick for pitch bend. 
+                    </p>
+                    <p>
+                        There are eight dials (potentiometers) for adjusting different effects and operational modes, such as octave, volume, vibrato size, scale, transposition, chord type, and more.
+                    </p>
+                    <p>
+                        All analog user input from the dials, neck, and joystick are converted to digital values, using and analog multiplexer and analog-to-digital conversion (ADC) on the 328P.
+                    </p>
+                    <p>
+                        We use an LCD display screen, and I wrote custom fonts and a graphics library to display notes and sensor values.
+                    </p>
+                    <p>
+                        One 328P controls the LCD screen, and the other takes the user input from the device and outputs it as MIDI commands to be interpreted by a MIDI speaker or processing software.
+                    </p>
+                </div>
+                <img class='side-image' id='cybersynth' src='https://amdreier.com/media/Cybersynth/cybersynth.png'>
+            </div>
         </div>
+        <h2>Demonstration:</h2>
+        <p>Here's a video demonstration of my partner, Victor Gao, using the Cybersynth:</p>
+        <video src='https://amdreier.com/media/Cybersynth/Cybersynth_Demo.mp4' type='video/mp4' controls></video>
     </div>
 </body>
 </html>
