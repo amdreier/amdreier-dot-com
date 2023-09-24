@@ -18,7 +18,7 @@
             <div class='text-side-image'>
                 <div class='side-text'>
                     <p>
-                        This was the final project for my Programming Languges and Techniques: I class written in Java using the Swing GUI framework.
+                        This was the final project for my Programming Languages and Techniques: I class written in Java using the Swing GUI framework.
                     </p>
                     <p>
                         It features the classic game of Minesweeper, with a few extra features.
@@ -37,7 +37,7 @@
             </div>
             <h3>Game Mechanics</h3>
             <p>
-                On each new game, the board is initally blank, and then filled in after the user's first click, which is always guarenteed to be a space touching no mines (denoted by an empty square). At this point the timer begins.
+                On each new game, the board is initially blank, and then filled in after the user's first click, which is always guaranteed to be a space touching no mines (denoted by an empty square). At this point the timer begins.
             </p>
             <p>
                 Right clicking on a square will flag it, and the user will not be able to open that tile until they unflag it. The user is told how many bombs are on the map by the number of flags they are given.
@@ -45,12 +45,12 @@
             </p>
             <p>
                 If there are 0 bombs adjacent to that tile, the game will automatically click all adjacent tiles recursively.
-                If the user clicks on a square with a bomb, that tile will reveal and red square, and an animation will begin to reveal all bomb tiles one by one, starting at the bottom right corner working up (skipping whichever bomb the user already revealed).
+                If the user clicks on a square with a bomb, that tile will reveal a red square, and an animation will begin to reveal all bomb tiles one by one, starting at the bottom right corner working up (skipping whichever bomb the user already revealed).
                 When the user has revealed all non-bomb tiles, the timer stops, and a similar animation plays, except this time the bomb squares are not opened, but instead turn blue.
             </p>
             <h3>Saved State</h3>
             <p>
-                Whenever the user wants, they can click on the 'Save Game' button to save the current state of their game, including the timer, flags, and opened tiles, onto the disk. This game state can be replayed at any time, even after the applicaiton has been closed and reopened, but clicking on the 'Load Game' button.
+                Whenever the user wants, they can click on the 'Save Game' button to save the current state of their game, including the timer, flags, and opened tiles, onto the disk. This game state can be replayed at any time, even after the application has been closed and reopened, but clicking on the 'Load Game' button.
                 The user can only save the game state once a game has begun, as the game doesn't have any state before a user clicks on the board.
             </p>
         </div>

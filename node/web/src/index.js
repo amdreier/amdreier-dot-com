@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 
 app.get('/', (request, response) => {
-    readFile('/var/www/node/web/src/html/nodeTest.html', 'utf8', (err, html) => {
+    readFile('/var/www/node/web/src/html/node.html', 'utf8', (err, html) => {
         if (err) {
             console.log(err);
             response.status(500).send('server error\n');
@@ -27,19 +27,6 @@ app.get('/', (request, response) => {
         response.send(html);
 
         log("GET /", request, "Success");
-    });
-});
-
-app.get('/nodeSubfolder', (request, response) => {
-    readFile('/var/www/node/web/src/html/nodeSubfolder.html', 'utf8', (err, html) => {
-        if (err) {
-            console.log(err);
-            response.status(500).send('server error\n');
-        }
-
-        response.send(html);
-
-        log("GET /nodeSubfolder", request, "Success");
     });
 });
 

@@ -16,17 +16,17 @@
         <h2>Description:</h2>
         <div class='project-description'>
             <p>
-                This Website acts as the sign in page to my Minecraft server, hosted at the same address. Signing in adds your IP address to 
+                This Website acts as the sign-in page to my Minecraft server, hosted at the same address. Signing in adds your IP address to 
                 the list of allowed addresses which can access the server.
             </p>
             <p>
                 The motivation behind this project, was that I noticed a large number of automated Minecraft bots attempting to join my server.
-                Even though I have a Whitelist enabled on the server (see <a href='https://amdreier.com/projects/whitelist-bot'>Whitelist-Bot project page</a>), I was still receiving a large volume of unwantted traffic to my server, which was clogging up my logs.
+                Even though I have a Whitelist enabled on the server (see <a href='https://amdreier.com/projects/whitelist-bot'>Whitelist-Bot project page</a>), I was still receiving a large volume of unwanted traffic to my server, which was clogging up my logs.
                 Additionally, as I host my server on my own network, as a security measure, I want to reduce unwanted traffic as much as possible to limit any exposure to potential attack vectors I could be more susceptible to.
             </p>
             <p>
-                This implementation ensures that unwanted traffic isn't just turned away, but ignored and given no information at all, so to a user who hasn't loggin in through this website, it appears as if I'm not hosting a Minecraft server at all.
-                This hopefully makes it much harder to launch an attack, but also more importantly, detters attention from my server in the first place.
+                This implementation ensures that unwanted traffic isn't just turned away, but ignored and given no information at all, so to a user who hasn't logged in through this website, it appears as if I'm not hosting a Minecraft server at all.
+                This hopefully makes it much harder to launch an attack, but also more importantly, it deters attention from my server in the first place.
             </p>
             <p>
                 This project works using a combination of backend technologies. The goal of this project was to give me more familiarity with tools like PHP, SQL/Databases, and Node.js
@@ -40,7 +40,7 @@
                 I also wanted to ensure I had exposure to a variety of backend technologies, given PHP's continued prevalence in Web applications today.
             </p>
             <p>
-                PHP is used to manage user logins, logouts, signups, and page permissions, which is made easier with PHP's native session handling and page redicrection.
+                PHP is used to manage user logins, logouts, signups, and page permissions, which is made easier with PHP's native session handling and page redirection.
                 PHP also makes it easy to connect with the MySQL database I use to store user data, with <em>prepared statements</em> to limit the risk of SQL injection. 
                 Additionally, using Apache configurations, I can store the sensitive database credentials in the <code>$_SERVER</code> variable, accessible within the PHP, but not visible in the source code.
             </p>
@@ -54,12 +54,12 @@
                 To ensure that user data is safely and securely stored, I use a combination of some cryptographic techniques.
             </p>
             <p>
-                The first technique is storing a the hash of the user's passowrd in the database, as opposed to the actual password, so that in the event of a database leak, my users' passowrds aren't exposed.
+                The first technique is storing a the hash of the user's password in the database, as opposed to the actual password, so that in the event of a database leak, my users' passwords aren't exposed.
                 When a user logs in, I check the hash of their entered password against the stored hash, which should only be the same if their password is correct.
             </p>
             <p>
                 This still creates issues when users use common passwords, or use the same password as other users, so to make sure each hash is unique, I generate a random unique "salt" for each user to add to their password before hashing it.
-                This salt is then stored with the user's passowrd so that I can check the hash as before.
+                This salt is then stored with the user's password so that I can check the hash as before.
                 This would make it much harder for an attacker to figure out a user's password given access to the database, but still not impossible, especially if the user has a common password.
             </p>
             <p>
@@ -81,7 +81,7 @@
             </p>
             <h4>Ex:</h4>
             <p>
-                Lastly, I have one Node.js server set up to serve content for a specific directory on the Web server, currently /node, however, this was mostly for my own learning and it doesn't server a real purpose for the project.
+                Lastly, I have one Node.js server set up to serve content for a specific directory on the Web server, currently /node, however, this was mostly for my own learning and it doesn't serve a real purpose for the project.
             </p>
         </div>
     </div>

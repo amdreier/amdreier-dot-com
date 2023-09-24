@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(167, 143, 112);
+    background-color: rgb(71, 62, 49);
     color:rgb(188, 238, 238);
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -34,7 +34,7 @@ img {
     }
 
     .project {
-        width: 350px;
+        width: 250px;
         border-style: solid;
         border-color: black;
         border-radius: 5px;
@@ -42,6 +42,17 @@ img {
         background-color: rgb(102, 97, 90);
         transition: all 0.5s ease;
         pointer-events: auto;
+        word-break: break-word;
+    }
+
+    .project h3 {
+        display: inline-block;
+    }
+
+    .iPhone {
+        border-radius: 20px;
+        height: 250px;
+        border: 3px solid black;
     }
 }
 
@@ -78,6 +89,12 @@ img {
         margin-left: 125px;
         margin-right: 125px;
     }
+
+    .iPhone {
+        border-radius: 30px;
+        height: 350px;
+        border: 3px solid black;
+    }
 }
 
 
@@ -106,6 +123,12 @@ img {
     cursor: pointer;
 }
 
+.project-page-link h3 {
+    color: rgb(188, 238, 238);
+    word-wrap: break-word;
+}
+
+
 .project-details {
     width: 100%;
 }
@@ -131,12 +154,6 @@ img {
 h2, h4, .project-page h1, .project-page h3 {
     border-bottom: 1px solid rgb(182, 170, 170);
     padding-bottom: 5px;
-}
-
-.iPhone {
-    border-radius: 30px;
-    height: 350px;
-    border: 3px solid black;
 }
 
 #cybersynth {
