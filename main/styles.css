@@ -123,7 +123,8 @@ img {
     cursor: pointer;
 }
 
-.project-page-link h3 {
+.project-page-link h3,
+.project-page-link p {
     color: rgb(188, 238, 238);
     word-wrap: break-word;
 }
