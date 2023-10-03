@@ -1,6 +1,11 @@
 <?php
     session_start();
 
+    if ($_SESSION['uid'] == -1) {
+        session_destroy();
+        session_start();
+    }
+
     if (isset($_SESSION['uid'])) {
         header("Location: https://romaetplus.amdreier.com");
         exit();
@@ -32,9 +37,9 @@
         // get and check results from DB
         $stmt->execute();
         $result = $stmt->get_result();
-        // done wtih DB, close connections
+        // close stmt
         $stmt->close();
-        $conn->close();
+        
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
 
@@ -76,6 +81,12 @@
                     /* Handle error */
                 }
 
+                $ip_result = $conn->query("SELECT * FROM IPs WHERE ip = '$ip' AND ip_uid = '$uid'");
+
+                if ($ip_result->num_rows == 0) {
+                    $conn->query("INSERT INTO IPs (ip, ip_uid) VALUES ('$ip', '$uid')");
+                }
+
                 // Sign in user, send to main page
                 $_SESSION['uid'] = $uid;
                 $_SESSION['username'] = $username;
@@ -89,6 +100,8 @@
             // username didn't match
             echo("Invalid Username and/or Password");
         }
+
+        $conn->close();
     }
 ?>
 
@@ -115,6 +128,6 @@
         </div>
         <input type="submit" value="Login">
     </form>
-    <p>Don't have an account? <a href='https://romaetplus.amdreier.com/signup'>Go To Signup</a></p>
+    <p>Don't have an account? <a href='https://romaetplus.amdreier.com/signup'>Create an Account</a> or <a href='https://romaetplus.amdreier.com/guestSignIn'>Continue As Guest</a></p>
 </body>
 </html>

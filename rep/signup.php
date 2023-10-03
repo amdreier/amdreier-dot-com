@@ -1,6 +1,11 @@
 <?php
     session_start();
 
+    if ($_SESSION['uid'] == -1) {
+        session_destroy();
+        session_start();
+    }
+
     if (isset($_SESSION['uid'])) {
         header("Location: https://romaetplus.amdreier.com");
         exit();
@@ -25,59 +30,66 @@
 
         // get entered user data
         $username = $_POST['username'];
-        $password = $_POST['password'];
-        $pswd_hash = 'N/A';
-        $uid = -1;
-
-        // get and check results from DB
-        $stmt->execute();
-        $result = $stmt->get_result();
-        // done wtih prepared statement 1
-        $stmt->close();
-        if ($result->num_rows > 0) {
-            // username match, try again
-            echo("Please enter a different Username");
-
-            // IN FUTURE ADD CHECK FOR WHITELIST
+        $password_1 = $_POST['password1'];
+        $password_2 = $_POST['password2'];
+        if ($password_1 != $password_2) {
+            echo("Passwords must match");
         } else {
-            // username didn't match, add user
+            $password = $password_1;
 
-            // get unused uid
-            $result = $conn->query("SELECT MAX(uid) AS 'max_uid' FROM Users");
-            if ($result->num_rows > 0) {
-                $uid = $result->fetch_assoc()['max_uid'] + 1;
-            } else {
-                $conn->close();
-                die("Couldn't connect to DB");
-            }
-            
-            $int_key = $_SERVER['INT_KEY'];
-            // Get hash from node
-            $url = "http://localhost:4000/pswd_hash";
-            $data = ['password' => "$password", 'int_key' => "$int_key"];
-            $options = [
-                'http' => [
-                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                    'method' => 'POST',
-                    'content' => http_build_query($data),
-                ],
-            ];
-            $context = stream_context_create($options);
-            $pswd_hash = file_get_contents($url, false, $context);
-            if ($result === false) {
-                /* Handle error */
-            }
+            $pswd_hash = 'N/A';
+            $uid = -1;
 
-            $stmt = $conn->prepare("INSERT INTO Users (uid, username, pswd_hash) VALUES ($uid, ?, ?)");
-            $stmt->bind_param("ss", $username, $pswd_hash);
+            // get and check results from DB
             $stmt->execute();
+            $result = $stmt->get_result();
+            // done wtih prepared statement 1
             $stmt->close();
+            if ($result->num_rows > 0) {
+                // username match, try again
+                echo("Please enter a different Username");
 
-            header("Location: https://romaetplus.amdreier.com/login");
+                // IN FUTURE ADD CHECK FOR WHITELIST
+            } else {
+                // username didn't match, add user
+
+                // get unused uid
+                $result = $conn->query("SELECT MAX(uid) AS 'max_uid' FROM Users");
+                if ($result->num_rows > 0) {
+                    $uid = $result->fetch_assoc()['max_uid'] + 1;
+                } else {
+                    $conn->close();
+                    die("Couldn't connect to DB");
+                }
+                
+                $int_key = $_SERVER['INT_KEY'];
+                // Get hash from node
+                $url = "http://localhost:4000/pswd_hash";
+                $data = ['password' => "$password", 'int_key' => "$int_key"];
+                $options = [
+                    'http' => [
+                        'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method' => 'POST',
+                        'content' => http_build_query($data),
+                    ],
+                ];
+                $context = stream_context_create($options);
+                $pswd_hash = file_get_contents($url, false, $context);
+                if ($result === false) {
+                    /* Handle error */
+                }
+
+                $stmt = $conn->prepare("INSERT INTO Users (uid, username, pswd_hash) VALUES ($uid, ?, ?)");
+                $stmt->bind_param("ss", $username, $pswd_hash);
+                $stmt->execute();
+                $stmt->close();
+
+                header("Location: https://romaetplus.amdreier.com/login");
+            }
+
+            // DB done, close
+            $conn->close();
         }
-
-        // DB done, close
-        $conn->close();
     }
 ?>
 
@@ -100,7 +112,11 @@
         </div>
         <div class="form-row">
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password"><br>
+            <input type="password" id="password1" name="password1"><br>
+        </div>
+        <div class="form-row">
+            <label for="password">Retype Password:</label>
+            <input type="password" id="password2" name="password2"><br>
         </div>
         <input type="submit" value="Sign Up">
     </form>

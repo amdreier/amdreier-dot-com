@@ -30,5 +30,9 @@
   <img class='rotate-on-hover' src='shared/media/server-icon.png'>
   <br>
   <a href="https://romaetplus.amdreier.com/logout">Logout</a>
+  <?php if($_SESSION['uid'] == -1) { ?>
+  <a href="https://romaetplus.amdreier.com/login">Login</a>
+  <a href="https://romaetplus.amdreier.com/signup">Create an Account</a>
+  <?php } ?>
 </body>
 </html>
