@@ -20,6 +20,8 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" type="text/css" href="shared/styles/sharedStyles.css">
   <title>Roma Et Plus Home Page</title>
+  <link rel=“icon” href='https://romaetplus.amdreier.com/media/rep_icon.ico' type="image/x-icon">
+  <link rel="shortcut icon" href='https://romaetplus.amdreier.com/media/rep_icon.ico' type="image/x-icon">
 </head>
 <body>
   <h1>This is the REP Home Page</h1>

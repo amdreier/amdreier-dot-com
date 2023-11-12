@@ -115,6 +115,8 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" type="text/css" href="shared/styles/sharedStyles.css">
     <title>REP Login</title>
+    <link rel=“icon” href='https://romaetplus.amdreier.com/media/rep_icon.ico' type="image/x-icon">
+    <link rel="shortcut icon" href='https://romaetplus.amdreier.com/media/rep_icon.ico' type="image/x-icon">
 </head>
 <body>
     <form method="post">
