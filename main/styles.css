@@ -4,7 +4,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.main-page h1{
+.main-page h1 {
     text-align: center;
 }
 
@@ -129,7 +129,6 @@ img {
     word-wrap: break-word;
 }
 
-
 .project-details {
     width: 100%;
 }
@@ -144,7 +143,8 @@ img {
     padding-bottom: 0px;
 }
 
-.project-page a {
+.project-page a,
+.project-page a:visited {
     text-decoration: none;
 }
 
@@ -213,14 +213,11 @@ h2, h4, .project-page h1, .project-page h3 {
     gap: 10px;
 }
 
-.hover-link {
-    color:rgb(188, 238, 238);
-    text-decoration: none;
-}
-
-.hover-link:hover {
+a:visited {
     color: blue;
 }
+
+
 
 /* .project-page {
 
