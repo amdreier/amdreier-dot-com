@@ -56,7 +56,7 @@
                 To ensure that user data is safely and securely stored, I use a combination of some cryptographic techniques.
             </p>
             <p>
-                The first technique is storing a the hash of the user's password in the database, as opposed to the actual password, so that in the event of a database leak, my users' passwords aren't exposed.
+                The first technique is storing a hash of the user's password in the database, as opposed to the actual password, so that in the event of a database leak, my users' passwords aren't exposed.
                 When a user logs in, I check the hash of their entered password against the stored hash, which should only be the same if their password is correct.
             </p>
             <p>
