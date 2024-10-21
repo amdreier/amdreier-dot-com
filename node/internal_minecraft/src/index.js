@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config()
 const app = express();
 const port = 3000;
+const quote = require('shell-quote/quote');
 
 function log(type, request, response) {
     console.log(`IP: ${request.header('x-forwarded-for')}`);
@@ -36,14 +37,22 @@ app.post('/allow', (req, res) => {
     const api_key = req.body.api_key;
     const req_ip = req.socket.remoteAddress;
 
+
     if (checkReq(req_ip, api_key)) {
 
-        const command = `echo "${process.env.ROOT_PASS}" | sudo -S ufw insert 1 allow from ${addr} proto tcp to any port 25565 comment '${user}'`;
-        exec(command);
+        const command = `echo "${process.env.ROOT_PASS}" | sudo -S ufw insert 1 allow from ${quote([addr])} proto tcp to any port 25565 comment ${quote([user])}`;
+        exec(command, (error, stdout, stderr) => {
+  if (error) {
+    console.error(`exec error: ${error}`);
+    return;
+  }
+  console.log(`stdout: ${stdout}`);
+  console.error(`stderr: ${stderr}`);
+});
 
         res.send("true");
 
-        log(`POST ${addr}, ${user} /allow`, req, `Added: ${addr}, ${user}`);
+        log(`lOST ${addr}, ${user} /allow`, req, `Added: ${quote([addr])}, ${quote([user])}`);
     } else {
         log(`POST ${addr}, ${user} /allow from ${req_ip}`, req, `Denied`);
     }
