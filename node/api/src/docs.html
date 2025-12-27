@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node</title>
+    <link rel=“icon” href='https://romaetplus.amdreier.com/media/rep_icon.ico' type="image/x-icon">
+    <link rel="shortcut icon" href='https://romaetplus.amdreier.com/media/rep_icon.ico' type="image/x-icon">
+</head>
+<body>
+    <h1>romaetplus.amdreier.com API Docs</h1>
+        <h2>GET /status</h2>
+            <p>
+                Returns JSON with schema:
+            </p>
+            <pre>
+            <code id="json-viewer" class="prettyprint">
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "running": {
+            "type": "boolean"
+        },
+        "players": {
+            "type": "array",
+            "items": [
+                {
+                "type": "string"
+                }
+            ]
+        }
+    },
+    "required": [
+        "running",
+        "players"
+    ]
+}
+                </code>
+                </pre>
+        
+</body>
+</html>

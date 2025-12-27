@@ -91,6 +91,7 @@
                 $_SESSION['uid'] = $uid;
                 $_SESSION['username'] = $username;
                 $_SESSION['ip'] = $ip;
+                $_SESSION['csrf_tok'] = base64_encode(random_bytes(32));
                 header("Location: https://romaetplus.amdreier.com");
             } else {
                 // password didn't match
@@ -119,6 +120,10 @@
     <link rel="shortcut icon" href='https://romaetplus.amdreier.com/media/rep_icon.ico' type="image/x-icon">
 </head>
 <body>
+    <h1>Login</h1>
+    <p>In order to join this server, you must both be whitelisted (see the Discord) and then log in to this Website on the same network you're playing on.</p>
+    <p>This website also lets you manage and interact with the server, doing things like managing, joining, and leaving a nation, check the server status, and more!</p>
+    <hr>
     <form method="post">
         <div class="form-row">
             <label for="username">Username:</label>

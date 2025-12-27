@@ -34,6 +34,7 @@
         $password_2 = $_POST['password2'];
         $token = $_POST['token'];
 
+        echo $token;
 
         if ($password_1 != $password_2) {
             echo("Passwords must match");
@@ -139,8 +140,8 @@
             <label for="password">Retype Password:</label>
             <input type="password" id="password2" name="password2"><br>
         </div>
-        <input type="hidden" id="username" name="username" value="<?php echo(htmlspecialchars(isset($_GET['username']) ? $_GET['username'] : "")); ?>">
-        <input type="hidden" id="token" name="token" value="<?php echo(htmlspecialchars(isset($_GET['token']) ? $_GET['token'] : "")); ?>">
+        <input type="hidden" id="username" name="username" value="<?= htmlspecialchars(isset($_GET['username']) ? $_GET['username'] : "") ?>">
+        <input type="hidden" id="token" name="token" value="<?= htmlspecialchars(isset($_GET['token']) ? $_GET['token'] : "") ?>">
         <input type="submit" value="Reset Password">
     </form>
 </body>

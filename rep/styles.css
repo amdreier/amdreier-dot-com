@@ -1,5 +1,6 @@
 body {
     background-color: aliceblue;
+    margin: 2%;
 }
 
 form {
@@ -22,4 +23,9 @@ label {
 
 input:focus {
     background-color: lightblue;
+}
+
+.nations-action-form {
+    display: inline-block;
+    margin-left: 5px;
 }

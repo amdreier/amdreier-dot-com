@@ -79,8 +79,8 @@
                     /* Handle error */
                 }
 
-                $stmt = $conn->prepare("INSERT INTO Users (uid, username, pswd_hash) VALUES ($uid, ?, ?)");
-                $stmt->bind_param("ss", $username, $pswd_hash);
+                $stmt = $conn->prepare("INSERT INTO Users (uid, username, pswd_hash) VALUES (?, ?, ?)");
+                $stmt->bind_param("iss", $uid, $username, $pswd_hash);
                 $stmt->execute();
                 $stmt->close();
 
@@ -107,6 +107,14 @@
     <link rel="shortcut icon" href='https://romaetplus.amdreier.com/media/rep_icon.ico' type="image/x-icon">
 </head>
 <body>
+    <h1>Signup</h1>
+    <p>It's preferable to use your in-game username, but not required as you can link your username later.</p>
+    <p>
+        For your security, please use a different password than you use elsewhere.
+        Even thoguh this website uses the best-practices for user login and account storage (read more at the <a href="https://amdreier.com/projects/romaetplus-amdreier-com">project page</a>),
+        this is still just a personal project.
+    </p>
+    <hr>
     <form method="post">
         <div class="form-row">
             <label for="username">Username:</label>
