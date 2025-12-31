@@ -111,7 +111,7 @@
     <p>It's preferable to use your in-game username, but not required as you can link your username later.</p>
     <p>
         For your security, please use a different password than you use elsewhere.
-        Even thoguh this website uses the best-practices for user login and account storage (read more at the <a href="https://amdreier.com/projects/romaetplus-amdreier-com">project page</a>),
+        Even though this website uses the best-practices for user login and account storage (read more at the <a href="https://amdreier.com/projects/romaetplus-amdreier-com">project page</a>),
         this is still just a personal project.
     </p>
     <hr>

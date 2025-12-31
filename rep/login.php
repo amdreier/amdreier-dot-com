@@ -122,7 +122,7 @@
 <body>
     <h1>Login</h1>
     <p>In order to join this server, you must both be whitelisted (see the Discord) and then log in to this Website on the same network you're playing on.</p>
-    <p>This website also lets you manage and interact with the server, doing things like managing, joining, and leaving a nation, check the server status, and more!</p>
+    <p>This website also lets you manage and interact with the server, doing things like managing, joining, and leaving a nation, checking the server status, and more!</p>
     <hr>
     <form method="post">
         <div class="form-row">

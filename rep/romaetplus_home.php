@@ -73,30 +73,20 @@
       }
     }
 
-    $check_disc_stmt = $conn->prepare("
-        SELECT disc_username
-        FROM Users
+    $check_user_stmt = $conn->prepare("
+        SELECT u.disc_username, u.mc_username, n.color_hex
+        FROM Users u LEFT JOIN Nations n ON u.u_nation_id = n.nid
         WHERE uid=?
       ");
-    $check_disc_stmt->bind_param("i", $uid);
-    $check_disc_stmt->execute();
-    $check_disc_row = $check_disc_stmt->get_result()->fetch_assoc();
-    $check_disc_stmt->close();
-    
-    $disc_verified = !empty($check_disc_row['disc_username']);
+    $check_user_stmt->bind_param("i", $uid);
+    $check_user_stmt->execute();
+    $row = $check_user_stmt->get_result()->fetch_assoc();
+    $check_user_stmt->close();
 
-
-    $check_mc_stmt = $conn->prepare("
-        SELECT mc_username
-        FROM Users
-        WHERE uid=?
-      ");
-    $check_mc_stmt->bind_param("i", $uid);
-    $check_mc_stmt->execute();
-    $check_mc_row = $check_mc_stmt->get_result()->fetch_assoc();
-    $check_mc_stmt->close();
+    $_SESSION['color'] = empty($row['color_hex']) ? "000000" : htmlspecialchars($row['color_hex']);
     
-    $mc_verified = !empty($check_mc_row['mc_username']);
+    $disc_verified = !empty($row['disc_username']);
+    $mc_verified = !empty($row['mc_username']);
 
     // DB done, close
     $conn->close();
@@ -138,7 +128,7 @@
 
   <h1>This is the REP Home Page</h1>
 
-  <p>Welcome <b><?= htmlspecialchars($username); ?></b>! <?= $uid == -1 ? "(Note that signing in as Guest is view-only and turns off certain website features.)" : "" ?></p>
+  <p>Welcome <b style='color: #<?= $_SESSION['color'] ?? "000000" ?>'><?= htmlspecialchars($username); ?></b>! <?= $uid == -1 ? "(Note that signing in as Guest is view-only and turns off certain website features.)" : "" ?></p>
   
   <?php if(isset($_SESSION['ip'])):?>
     <p>You can now log onto the server from this network.</p>
@@ -152,6 +142,7 @@
   <hr>
 
   <?php if ($_SESSION['uid'] != -1): ?>
+    <p>You can verify your Discord and Minecraft usernames below. Read more about it in the <a href="https://romaetplus.amdreier.com/guide#Verifying">Guide</a></p>
     <?php if ($disc_verified):?>
       <p>
         Your Discord account is currently verified.

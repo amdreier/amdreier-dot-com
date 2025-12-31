@@ -6,11 +6,6 @@
         session_start();
     }
 
-    if (isset($_SESSION['uid'])) {
-        header("Location: https://romaetplus.amdreier.com");
-        exit();
-    }
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         /* SETUP SQL */
         $sql_servername = $_SERVER['DB_SERVER'];
@@ -131,6 +126,15 @@
     <link rel="shortcut icon" href='https://romaetplus.amdreier.com/media/rep_icon.ico' type="image/x-icon">
 </head>
 <body>
+    <?php include "navbar.php";?>
+    <h1>Password Reset</h1>
+    <p>This page will reset the password of <?= htmlspecialchars(isset($_GET['username']) ? $_GET['username'] : "") ?> on the this login website.</p>
+    <p>
+        For your security, please use a different password than you use elsewhere.
+        Even though this website uses the best-practices for user login and account storage (read more at the <a href="https://amdreier.com/projects/romaetplus-amdreier-com">project page</a>),
+        this is still just a personal project.
+    </p>
+    <hr>
     <form method="post">
         <div class="form-row">
             <label for="password">Password:</label>

@@ -256,7 +256,7 @@ app.post('/sendMCLink', async (req, res) => {
 
         const link = `https://romaetplus.amdreier.com/api/verifyMC?token=${encodeURIComponent(token)}&username=${encodeURIComponent(mc_username)}`;
 
-        const command = `tellraw ${quote([mc_username])} {text:"Click here to verify",italic:true,underlined:true,color:"blue",click_event:{action:"open_url",url:"${link}"}}`;
+        const command = `tellraw ${quote([mc_username])} {text:"Click here to verify. IMPORTANT: ONLY CLICK IF YOU GENERATED THIS LINK!",italic:true,underlined:true,color:"blue",click_event:{action:"open_url",url:"${link}"}}`;
 
         let response = await rcon.send(command);
         rcon.end();
@@ -336,6 +336,105 @@ app.get('/resetLink', async (req, res) => {
         console.log(error);
         res.status(500).send("Server error");
     }
+});
+
+app.post('/Nations/create/:name/:color', async (req, res) => {
+    const api_key = req.body.api_key;
+    const name = req.params.name;
+    const color = req.params.color;
+
+    if (api_key != process.env.API_KEY) {
+        console.log("bad API key for /Nations/create");
+        return;
+    }
+    
+    const rcon = await Rcon.connect({
+        host: "romaetplus.amdreier.com", port: 2570, password: process.env.RCON_PSWD
+    });
+
+    let command = `team add ${quote([name])}`;
+    let response = await rcon.send(command);
+    console.log(response)
+
+    const tag = ` (${name})`;
+    command = `team modify ${quote([name])} suffix ${quote([tag])}`;
+    response = await rcon.send(command);
+    console.log(response)
+
+    command = `team modify ${quote([name])} color ${quote([color])}`;
+    response = await rcon.send(command);
+    console.log(response)
+
+    rcon.end();
+    res.status(200).send("Ok");
+});
+
+app.post('/Nations/delete/:name', async (req, res) => {
+    const api_key = req.body.api_key;
+    const name = req.params.name;
+
+    if (api_key != process.env.API_KEY) {
+        console.log("bad API key for /Nations/delete");
+        return;
+    }
+    
+    const rcon = await Rcon.connect({
+        host: "romaetplus.amdreier.com", port: 2570, password: process.env.RCON_PSWD
+    });
+
+    const command = `team remove ${quote([name])}`;
+
+    let response = await rcon.send(command);
+    console.log(response)
+    rcon.end();
+    res.status(200).send("Ok");
+});
+
+app.post('/Nations/join/:name/:player', async (req, res) => {
+    const api_key = req.body.api_key;
+    const name = req.params.name;
+    const player = req.params.player;
+
+
+    if (api_key != process.env.API_KEY) {
+        console.log("bad API key for /Nations/join");
+        return;
+    }
+    
+    const rcon = await Rcon.connect({
+        host: "romaetplus.amdreier.com", port: 2570, password: process.env.RCON_PSWD
+    });
+
+    const command = `team join ${quote([name])} ${quote([player])}`;
+
+    console.log(command);
+
+    let response = await rcon.send(command);
+    console.log(response)
+    rcon.end();
+    res.status(200).send("Ok");
+});
+
+app.post('/Nations/leave/:player', async (req, res) => {
+    const api_key = req.body.api_key;
+    const player = req.params.player;
+
+    if (api_key != process.env.API_KEY) {
+        console.log("bad API key for /Nations/leave");
+        return;
+    }
+    
+    const rcon = await Rcon.connect({
+        host: "romaetplus.amdreier.com", port: 2570, password: process.env.RCON_PSWD
+    });
+
+    const command = `team leave ${quote([player])}`;
+
+    let response = await rcon.send(command);
+    console.log(response);
+    rcon.end();
+
+    res.status(200).send("Ok");
 });
 
 app.listen(port, () => console.log(`Server started on port: ${port}\n`));
